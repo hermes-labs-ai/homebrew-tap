@@ -7,7 +7,7 @@ class HermesGate < Formula
   sha256 "e1fabf63f1f014611bd368ace4164f5cc2af7778661e42fb970816e4ccbcc453"
   license "MIT"
 
-  depends_on "python@3.14"
+  depends_on "python@3.13"
 
   def install
     virtualenv_install_with_resources
