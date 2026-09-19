@@ -14,6 +14,6 @@ class RuleAudit < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/rule-audit --version")
+    assert_match "Rules parsed", shell_output("#{bin}/rule-audit --demo --format summary", 2)
   end
 end

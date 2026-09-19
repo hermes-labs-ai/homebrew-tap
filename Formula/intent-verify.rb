@@ -14,6 +14,12 @@ class IntentVerify < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/intent-verify --version")
+    (testpath/"SPEC.md").write("# Requirements\n\n- [ ] parser handles JSON input\n")
+    (testpath/"parser.py").write("# Parser handles JSON input.\ndef parse_json_input():\n    return True\n")
+    output = shell_output(
+      "#{bin}/intent-verify check --spec SPEC.md --repo . --evidence-path parser.py " \
+      "--min-verified 0.5 --min-item 0.2",
+    )
+    assert_match "VERIFIED", output
   end
 end
