@@ -3,8 +3,8 @@ class IntentVerify < Formula
 
   desc "Check source coverage of markdown acceptance items"
   homepage "https://github.com/hermes-labs-ai/intent-verify"
-  url "https://files.pythonhosted.org/packages/78/be/8e5f5545e09d476ba1ed8f99cb8428fbca86d132cd6e2328240374eb4188/intent_verify-0.2.0.tar.gz"
-  sha256 "29b35337d9980b37f1db501e22eb960b8c382bfdee92e05ec83ef549793e3478"
+  url "https://files.pythonhosted.org/packages/39/22/04aa28ea41debaf74cd9cb5b3ee89b324594ebcc2c6c4397ab4fadc6f94f/intent_verify-0.2.1.tar.gz"
+  sha256 "a27fb2a43bac51e005fab033920d10844f5f25c4cda0e67803f4c81fc0edc3c5"
   license "MIT"
 
   depends_on "python@3.13"
