@@ -1,0 +1,39 @@
+name: Test formulae
+
+on:
+  pull_request:
+    paths: ["Formula/**", ".github/workflows/test-formulae.yml"]
+  push:
+    branches: [main]
+    paths: ["Formula/**", ".github/workflows/test-formulae.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Audit, install, and test the checked-out formulae
+        shell: bash
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: |
+          set -euo pipefail
+          brew tap --custom-remote hermes-labs-ai/tap "$GITHUB_WORKSPACE"
+          for source in Formula/*.rb; do
+            name="$(basename "$source" .rb)"
+            formula="hermes-labs-ai/tap/$name"
+            if brew help trust >/dev/null 2>&1; then
+              brew trust --formula "$formula"
+            fi
+            brew audit --strict "$formula"
+            brew install --build-from-source "$formula"
+            brew test "$formula"
+          done
