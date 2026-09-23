@@ -3,8 +3,8 @@ class AgentConvergenceScorer < Formula
 
   desc "Score lexical convergence across agent outputs"
   homepage "https://github.com/hermes-labs-ai/agent-convergence-scorer"
-  url "https://files.pythonhosted.org/packages/9e/cd/817ca2b863c28072350335c88f80c210dcc992952a35c650b1187fd4b06c/agent_convergence_scorer-0.2.0.tar.gz"
-  sha256 "ff884379bcd37cbe58379e1762b660765fb042a67b6f3674e107da94850f85cf"
+  url "https://files.pythonhosted.org/packages/38/00/195a288454203eb04295c931d0098f785d772e5ff6d7b47454c843f60cf8/agent_convergence_scorer-0.3.0.tar.gz"
+  sha256 "f4d70fb89a78ec136b55536e192bfd3715bc58a89feb9b650cc592a137de4287"
   license "MIT"
 
   depends_on "python@3.13"
@@ -46,5 +46,10 @@ class AgentConvergenceScorer < Formula
   test do
     output = pipe_output("#{bin}/agent-convergence-scorer - --indent 0", '["same", "same"]')
     assert_match '"convergence_score": 1.0', output
+
+    first_order = pipe_output("#{bin}/agent-convergence-scorer - --indent 0", '["A", "A", "B"]')
+    second_order = pipe_output("#{bin}/agent-convergence-scorer - --indent 0", '["B", "A", "A"]')
+    assert_match '"convergence_score": 0.266', first_order
+    assert_match '"convergence_score": 0.266', second_order
   end
 end
