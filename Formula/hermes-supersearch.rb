@@ -89,13 +89,13 @@ class HermesSupersearch < Formula
 
     # numpy comes from Homebrew's numpy formula; expose it to this virtualenv.
     site_packages = Language::Python.site_packages("python3.13")
-    numpy_site = Formula["numpy"].opt_prefix/site_packages
+    numpy_site = formula_opt_prefix("numpy")/site_packages
     (libexec/site_packages/"homebrew-numpy.pth").write "#{numpy_site}\n"
 
-    ENV.prepend_path "PATH", Formula["libxml2"].opt_bin
-    ENV.prepend_path "PATH", Formula["libxslt"].opt_bin
-    ENV.prepend_path "PKG_CONFIG_PATH", Formula["libxml2"].opt_lib/"pkgconfig"
-    ENV.prepend_path "PKG_CONFIG_PATH", Formula["libxslt"].opt_lib/"pkgconfig"
+    ENV.prepend_path "PATH", formula_opt_bin("libxml2")
+    ENV.prepend_path "PATH", formula_opt_bin("libxslt")
+    ENV.prepend_path "PKG_CONFIG_PATH", formula_opt_lib("libxml2")/"pkgconfig"
+    ENV.prepend_path "PKG_CONFIG_PATH", formula_opt_lib("libxslt")/"pkgconfig"
 
     venv.pip_install resources
     venv.pip_install_and_link buildpath
