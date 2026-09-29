@@ -100,10 +100,9 @@ class HermesSupersearch < Formula
 
     # primp vendors aws-lc, whose jitterentropy source must not be built with optimizations.
     primp, others = resources.partition { |r| r.name == "primp" }
+    venv.pip_install others
     ENV.O0
     venv.pip_install primp
-    ENV.Os
-    venv.pip_install others
     venv.pip_install_and_link buildpath
   end
 
