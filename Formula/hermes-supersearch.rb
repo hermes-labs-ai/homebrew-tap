@@ -98,7 +98,12 @@ class HermesSupersearch < Formula
     ENV.prepend_path "PKG_CONFIG_PATH", formula_opt_lib("libxml2")/"pkgconfig"
     ENV.prepend_path "PKG_CONFIG_PATH", formula_opt_lib("libxslt")/"pkgconfig"
 
-    venv.pip_install resources
+    # primp vendors aws-lc, whose jitterentropy source must not be built with optimizations.
+    primp, others = resources.partition { |r| r.name == "primp" }
+    ENV.O0
+    venv.pip_install primp
+    ENV.Os
+    venv.pip_install others
     venv.pip_install_and_link buildpath
   end
 
