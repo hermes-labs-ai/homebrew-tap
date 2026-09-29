@@ -1,7 +1,7 @@
 class ClaudeRouter < Formula
   include Language::Python::Virtualenv
 
-  desc "Prompt router that chooses a Claude model tier and scaffold from local embeddings"
+  desc "Route prompts to a Claude model tier and scaffold using local embeddings"
   homepage "https://github.com/hermes-labs-ai/claude-router"
   url "https://files.pythonhosted.org/packages/4f/58/d183d2d653b0df774ed5c56768624663b1af0a47d382a172ff036dc84735/claude_router-1.1.1.tar.gz"
   sha256 "551ddb452f58ea0d425e0f347b5597066206a9db94de3be895fe063622993e8d"
