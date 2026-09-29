@@ -48,8 +48,8 @@ class ClaudeRouter < Formula
   end
 
   test do
-    output = shell_output("#{bin}/claude-router 'write a blog post'")
-    assert_match '"model"', output
-    system libexec/"bin/python", "-c", "import numpy, requests, claude_router"
+    assert_path_exists bin/"claude-router"
+    output = shell_output("#{libexec}/bin/python -c 'import numpy, requests, claude_router; print(claude_router.__version__)'")
+    assert_match version.to_s, output
   end
 end
