@@ -3,8 +3,8 @@ class Lintlang < Formula
 
   desc "Static linter for AI agent configs, tool descriptions, and system prompts"
   homepage "https://lintlang.ai/"
-  url "https://files.pythonhosted.org/packages/d6/30/841117bb0110074d5c2483be4585884a2444c634a9e1d161429f1be885df/lintlang-0.7.1.tar.gz"
-  sha256 "afd00466277de447bcfa41a9fe29a34dac5e40d7dfb0b8f21763f29398fb8b47"
+  url "https://files.pythonhosted.org/packages/e7/06/d8c51ef61c6d02873ba9a353059f754dc64fa7e5db6354746f66b70785d6/lintlang-0.8.1.tar.gz"
+  sha256 "69d1905e4562bbc05dc08b5fed451a9cec29f8dd5178574ff5218161525e0d2e"
   license "Apache-2.0"
 
   depends_on "libyaml"

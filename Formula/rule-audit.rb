@@ -3,8 +3,8 @@ class RuleAudit < Formula
 
   desc "Audit AI system prompts for rule conflicts and gaps"
   homepage "https://github.com/hermes-labs-ai/rule-audit"
-  url "https://files.pythonhosted.org/packages/1e/0f/0b4d4389c874cbad55e3453a3bbbab4b7f4f9872c66096aecdc934236eb7/rule_audit-0.4.0.tar.gz"
-  sha256 "5a3db509511a3ecc705a0a85893b6ff63cc6025eea09edad03aa61e39be057a0"
+  url "https://files.pythonhosted.org/packages/5d/9d/26b0e0bd9252e392989cb7acd1d88713ffcfdf4117395808a96eb8773108/rule_audit-0.5.0.tar.gz"
+  sha256 "d7e4b0b0094eb5d1759759f99adf936a794397dca4167c3243571166165870c0"
   license "MIT"
 
   depends_on "python@3.13"
