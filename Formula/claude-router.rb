@@ -49,7 +49,8 @@ class ClaudeRouter < Formula
 
   test do
     assert_path_exists bin/"claude-router"
-    output = shell_output("#{libexec}/bin/python -c 'import numpy, requests, claude_router; print(claude_router.__version__)'")
-    assert_match version.to_s, output
+    system libexec/"bin/python", "-c", "import numpy, requests, claude_router"
+    version_cmd = "#{libexec}/bin/python -c 'import claude_router; print(claude_router.__version__)'"
+    assert_match version.to_s, shell_output(version_cmd)
   end
 end
