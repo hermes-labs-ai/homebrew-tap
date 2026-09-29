@@ -7,6 +7,7 @@ class HermesSupersearch < Formula
   sha256 "ffcaebe4f92e5b3dece202340993ad2c4948ac4218585947ace79d5e32a89a53"
   license "Apache-2.0"
 
+  depends_on "cmake" => :build
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
   depends_on "libxml2"
