@@ -13,7 +13,7 @@ class HermesSupersearch < Formula
   depends_on "libxml2"
   depends_on "libxslt"
   depends_on "numpy"
-  depends_on "python@3.13"
+  depends_on "python@3.14"
 
   resource "anyio" do
     url "https://files.pythonhosted.org/packages/a9/d2/f4d173e22df740bc37b1db102b386ba719b66e95b0f0d751f556b387e6d2/anyio-4.15.1.tar.gz"
@@ -86,10 +86,10 @@ class HermesSupersearch < Formula
   end
 
   def install
-    venv = virtualenv_create(libexec, "python3.13")
+    venv = virtualenv_create(libexec, "python3.14")
 
     # numpy comes from Homebrew's numpy formula; expose it to this virtualenv.
-    site_packages = Language::Python.site_packages("python3.13")
+    site_packages = Language::Python.site_packages("python3.14")
     numpy_site = formula_opt_prefix("numpy")/site_packages
     (libexec/site_packages/"homebrew-numpy.pth").write "#{numpy_site}\n"
 
