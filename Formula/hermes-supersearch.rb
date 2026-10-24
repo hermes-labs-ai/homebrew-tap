@@ -3,8 +3,8 @@ class HermesSupersearch < Formula
 
   desc "Deadline-bounded local search fan-out with source-explicit JSON receipts"
   homepage "https://github.com/hermes-labs-ai/supersearch"
-  url "https://files.pythonhosted.org/packages/d9/59/f669c92ce1985cee2a3080d678c4f356e6fea600daeb2748ae5e3b3a44c2/hermes_supersearch-0.11.0.tar.gz"
-  sha256 "ffcaebe4f92e5b3dece202340993ad2c4948ac4218585947ace79d5e32a89a53"
+  url "https://files.pythonhosted.org/packages/75/ae/aa3bc030e2016b6b20be32cc9994f87b4e91cc0272c8d1d875f608b39463/hermes_supersearch-0.11.1.tar.gz"
+  sha256 "9c9e0d9b2ea4456167ea3717a77817e17f602929753291db06c6fdc4a12fbd8b"
   license "Apache-2.0"
 
   depends_on "cmake" => :build
@@ -107,6 +107,7 @@ class HermesSupersearch < Formula
   end
 
   test do
+    assert_equal version.to_s, shell_output("#{bin}/supersearch --version").strip
     assert_match "supersearch verify", shell_output("#{bin}/supersearch --help")
     system libexec/"bin/python", "-c", "import numpy, lxml.etree, ddgs, supersearch"
   end
