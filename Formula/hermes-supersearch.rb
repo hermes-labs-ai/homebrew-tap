@@ -3,8 +3,8 @@ class HermesSupersearch < Formula
 
   desc "Deadline-bounded local search fan-out with source-explicit JSON receipts"
   homepage "https://github.com/hermes-labs-ai/supersearch"
-  url "https://files.pythonhosted.org/packages/d9/59/f669c92ce1985cee2a3080d678c4f356e6fea600daeb2748ae5e3b3a44c2/hermes_supersearch-0.11.0.tar.gz"
-  sha256 "ffcaebe4f92e5b3dece202340993ad2c4948ac4218585947ace79d5e32a89a53"
+  url "https://files.pythonhosted.org/packages/75/ae/aa3bc030e2016b6b20be32cc9994f87b4e91cc0272c8d1d875f608b39463/hermes_supersearch-0.11.1.tar.gz"
+  sha256 "9c9e0d9b2ea4456167ea3717a77817e17f602929753291db06c6fdc4a12fbd8b"
   license "Apache-2.0"
 
   depends_on "cmake" => :build
@@ -13,7 +13,7 @@ class HermesSupersearch < Formula
   depends_on "libxml2"
   depends_on "libxslt"
   depends_on "numpy"
-  depends_on "python@3.13"
+  depends_on "python@3.14"
 
   resource "anyio" do
     url "https://files.pythonhosted.org/packages/a9/d2/f4d173e22df740bc37b1db102b386ba719b66e95b0f0d751f556b387e6d2/anyio-4.15.1.tar.gz"
@@ -86,10 +86,10 @@ class HermesSupersearch < Formula
   end
 
   def install
-    venv = virtualenv_create(libexec, "python3.13")
+    venv = virtualenv_create(libexec, "python3.14")
 
     # numpy comes from Homebrew's numpy formula; expose it to this virtualenv.
-    site_packages = Language::Python.site_packages("python3.13")
+    site_packages = Language::Python.site_packages("python3.14")
     numpy_site = formula_opt_prefix("numpy")/site_packages
     (libexec/site_packages/"homebrew-numpy.pth").write "#{numpy_site}\n"
 
@@ -107,6 +107,7 @@ class HermesSupersearch < Formula
   end
 
   test do
+    assert_equal version.to_s, shell_output("#{bin}/supersearch --version").strip
     assert_match "supersearch verify", shell_output("#{bin}/supersearch --help")
     system libexec/"bin/python", "-c", "import numpy, lxml.etree, ddgs, supersearch"
   end

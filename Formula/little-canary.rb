@@ -3,8 +3,8 @@ class LittleCanary < Formula
 
   desc "Prompt-injection detection using a sacrificial canary model"
   homepage "https://littlecanary.ai"
-  url "https://files.pythonhosted.org/packages/2e/c7/8ac710f1585297b00cc5dafb3741d5201c3f8b29988707e576ab98927c27/little_canary-0.4.0.tar.gz"
-  sha256 "e8f890fd9c0957c1cbc0b3ab37d62b6029a76ea102379446b71ae93e3ec218c6"
+  url "https://files.pythonhosted.org/packages/ba/fe/17317bd90aee2fff5b9a90e6d456e5c901bbafa27567e04ee02c5d4203ed/little_canary-0.5.1.tar.gz"
+  sha256 "172a9c3e86283b5bd13c55dac6ca90dcc3138a2a40524ef7c008dcaa3490d315"
   license "Apache-2.0"
 
   depends_on "python@3.13"
